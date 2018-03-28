@@ -5,7 +5,6 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
         <?php
             $db = mysqli_connect('127.0.0.1', 'root') or die(mysqli_connect_error());
-            mysqli_query($db, "CREATE DATABASE IF NOT EXISTS craigslist");
             mysqli_select_db($db, 'craigslist') or header("location: Error.php");
             session_start();
         ?>
