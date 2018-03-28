@@ -5,7 +5,9 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
         <?php
             $db = mysqli_connect('127.0.0.1', 'root') or die(mysqli_connect_error());
+            mysqli_query($db, "CREATE DATABASE IF NOT EXISTS craigslist");
             mysqli_select_db($db, 'craigslist') or header("location: Error.php");
+            session_start();
         ?>
         <script>
             $(function(){
@@ -23,19 +25,20 @@
                     $_SESSION["username"] = $_POST["name"];
                     $_SESSION["password"] = $_POST["password"];
 				    echo "Hello, ".$_SESSION["username"].", your password is ".$_SESSION["password"];
-                    header("location: Index.php; refresh: 0");
+                    header("refresh: 3; url=Index.php");
                 }else{
-                    echo "wrong username or wrong password";
+                    echo "username = '".$_POST["name"]."' AND password = '".$_POST["password"]."'";
+                    echo "<br>wrong username or wrong password";
                     unset($_POST["name"]);
                     unset($_POST["password"]);
-                    refresh();
+                    header("refresh: 3");
                 }
             }else{
         ?>
                 <h1 class="title">Login</h1>
                 <div class="outside">
                     <div class="inside">
-                        <form action="Login.php" type="post">
+                        <form action="Login.php" method="post">
                             <div class="left_column">
                                 <label for="name">Username: </label><br>
                                 <label for="digits">Password:	</label><br>

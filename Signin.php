@@ -10,7 +10,7 @@
             mysqli_query($db, "
                 CREATE TABLE IF NOT EXISTS account(
                     username VARCHAR(45) NOT NULL,
-                    password VARCHAR(8) NOT NULL,
+                    password VARCHAR(20) NOT NULL,
                     emailaddress VARCHAR(255) NOT NULL
                 )") or die(mysqli_error($db));
         ?>
@@ -23,7 +23,6 @@
     <body>
         <?php
             if(isset($_POST["name"]) || isset($_POST["password"]) || isset($_POST["email"])){
-				echo "Hello, ".$_POST["name"].", your password is ".$_POST["password"];
                 mysqli_query($db, "
                 INSERT INTO account(
                     username,
@@ -34,13 +33,14 @@
                     '".$_POST["password"]."',
                     '".$_POST["email"]."'
                 )") or die(mysqli_error($db));
-                header("location: Login.php", true, 0);
+				//echo "Hello, ".$_POST["name"].", you've create a new account successfully";
+                header("Location: Login.php");
             }else{
         ?>
                 <h1 class="title">Sign Up</h1>
                 <div class="outside">
                     <div class="inside">
-                        <form action="Signin.php">
+                        <form action="Signin.php" method="post">
                             <div class="left_column">
                                 <label for="name">Name: </label><br>
                                 <label for="digits">Password:	</label><br>
