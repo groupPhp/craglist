@@ -2,7 +2,7 @@
 	session_start();
 	$_SESSION = array();
     
-	$db = mysqli_connect('127.0.0.1', 'root') or die(mysqli_connect_error());
+	$db = mysqli_connect('127.0.0.1', 'root', '1234') or die(mysqli_connect_error());
             mysqli_query($db, "DROP DATABASE IF EXISTS craigslist");
             mysqli_query($db, "DROP DATABASE IF EXISTS school");
     

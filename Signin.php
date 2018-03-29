@@ -4,7 +4,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
         <?php
-            $db = mysqli_connect('127.0.0.1', 'root') or die(mysqli_connect_error());
+            $db = mysqli_connect('127.0.0.1', 'root', '1234') or die(mysqli_connect_error());
             mysqli_query($db, "CREATE DATABASE IF NOT EXISTS craigslist");
             mysqli_select_db($db, 'craigslist') or die(mysqli_error($db));
             mysqli_query($db, "

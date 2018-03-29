@@ -1,5 +1,5 @@
 <?php
-    $db = mysqli_connect('127.0.0.1', 'root') or die(mysqli_connect_error());
+    $db = mysqli_connect('localhost', 'root', '1234') or die(mysqli_connect_error());
     mysqli_select_db($db, 'craigslist') or header("location: Error.php");
 
     if(isset($_POST["search"])){
