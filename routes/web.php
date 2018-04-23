@@ -12,7 +12,7 @@
 */
 
 Route::get('/home', function () {
-    return view('home');
+    return view('home')->with('articles', \App\Article::all());
 });
 
 Route::get('/admin', function () {
